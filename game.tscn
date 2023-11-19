@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds5pbh5r52m51"]
+
+[ext_resource type="Script" path="res://input.gd" id="1_0y3aw"]
+[ext_resource type="Script" path="res://game.gd" id="1_6n3b0"]
+[ext_resource type="FontFile" uid="uid://d2hd7rstr1g05" path="res://fonts/IBMPlexMono-Regular.ttf" id="1_hjnn2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmncs"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ohrk"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5j7r"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2oxx5"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhpjp"]
+bg_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8c5u2"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6n3b0")
+
+[node name="background" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jmncs")
+
+[node name="MarginContainer" type="MarginContainer" parent="background"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Rows" type="VBoxContainer" parent="background/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="game_info" type="PanelContainer" parent="background/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_3ohrk")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="background/MarginContainer/Rows/game_info"]
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="history_rows" type="VBoxContainer" parent="background/MarginContainer/Rows/game_info/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="input_area" type="PanelContainer" parent="background/MarginContainer/Rows"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_a5j7r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="background/MarginContainer/Rows/input_area"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="background/MarginContainer/Rows/input_area/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_2oxx5")
+text = " > "
+
+[node name="input" type="LineEdit" parent="background/MarginContainer/Rows/input_area/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_hjnn2")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_qhpjp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8c5u2")
+max_length = 50
+script = ExtResource("1_0y3aw")
+
+[connection signal="text_submitted" from="background/MarginContainer/Rows/input_area/HBoxContainer/input" to="." method="_on_input_text_submitted"]
+[connection signal="text_submitted" from="background/MarginContainer/Rows/input_area/HBoxContainer/input" to="background/MarginContainer/Rows/input_area/HBoxContainer/input" method="_on_text_submitted"]
