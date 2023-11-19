@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3nignl14gbww"]
+
+[ext_resource type="FontFile" uid="uid://d2hd7rstr1g05" path="res://fonts/IBMPlexMono-Regular.ttf" id="1_73n26"]
+
+[node name="input_history" type="Label"]
+theme_override_fonts/font = ExtResource("1_73n26")
+theme_override_font_sizes/font_size = 10
+text = " > This is user input"

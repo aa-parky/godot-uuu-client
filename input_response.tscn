@@ -1,19 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dw6jt2bo8whym"]
+[gd_scene load_steps=4 format=3 uid="uid://dw6jt2bo8whym"]
 
 [ext_resource type="Script" path="res://input_response.gd" id="1_a83ty"]
-[ext_resource type="FontFile" uid="uid://d2hd7rstr1g05" path="res://fonts/IBMPlexMono-Regular.ttf" id="1_uxbkw"]
+[ext_resource type="PackedScene" uid="uid://c3nignl14gbww" path="res://input_history.tscn" id="2_dt0r4"]
+[ext_resource type="PackedScene" uid="uid://1ady3s4kdtw0" path="res://response.tscn" id="3_vyh8s"]
 
 [node name="input_response" type="VBoxContainer"]
 script = ExtResource("1_a83ty")
 
-[node name="input_history" type="Label" parent="."]
+[node name="input_history" parent="." instance=ExtResource("2_dt0r4")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_uxbkw")
-theme_override_font_sizes/font_size = 10
-text = " > This is user input"
 
-[node name="response" type="Label" parent="."]
+[node name="response" parent="." instance=ExtResource("3_vyh8s")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_uxbkw")
-theme_override_font_sizes/font_size = 16
-text = "The game returns this"
+autowrap_mode = 0

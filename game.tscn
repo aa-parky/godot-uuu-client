@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds5pbh5r52m51"]
+[gd_scene load_steps=11 format=3 uid="uid://ds5pbh5r52m51"]
 
 [ext_resource type="Script" path="res://input.gd" id="1_0y3aw"]
 [ext_resource type="Script" path="res://game.gd" id="1_6n3b0"]
 [ext_resource type="FontFile" uid="uid://d2hd7rstr1g05" path="res://fonts/IBMPlexMono-Regular.ttf" id="1_hjnn2"]
+[ext_resource type="Script" path="res://command_processor.gd" id="2_j5qra"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jmncs"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 1)
@@ -29,6 +30,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6n3b0")
+
+[node name="command_processor" type="Node" parent="."]
+script = ExtResource("2_j5qra")
 
 [node name="background" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -62,6 +66,8 @@ horizontal_scroll_mode = 0
 
 [node name="history_rows" type="VBoxContainer" parent="background/MarginContainer/Rows/game_info/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 5
 
 [node name="input_area" type="PanelContainer" parent="background/MarginContainer/Rows"]
